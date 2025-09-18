@@ -12,7 +12,7 @@ import lombok.Data;
 public class Disease {
 
     @Id
-    private String namaste_codes;  // Primary Key
+    private String namaste_codes;  
     private String english_transliteration;
     private String ancient_term;
     private String icd_tm2_term;

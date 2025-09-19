@@ -4,6 +4,7 @@ import com.paaram.icdNamaste.service.DiseaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -12,14 +13,19 @@ public class DiseaseController {
     @Autowired
     private DiseaseService service;
 
-    @GetMapping("/code/{code}")
+    @GetMapping("/{code}")
     public Optional<Disease> getDiseaseByCode(@PathVariable String code) {
         return service.getDiseaseByCode(code);
     }
 
-    @GetMapping("/name/{name}")
-    public Optional<Disease> getDiseaseByEnglishName(@PathVariable String name) {
-        return service.getDiseaseByEnglishName(name);
+//    @GetMapping("/name/{name}")
+//    public Optional<Disease> getDiseaseByEnglishName(@PathVariable String name) {
+//        return service.getDiseaseByEnglishName(name);
+//    }
+
+    @GetMapping("/search")
+    public List<Disease> searchByEnglishTranslation(@RequestParam String prefix) {
+        return service.searchByEnglishTranslationPrefix(prefix);
     }
 }
 

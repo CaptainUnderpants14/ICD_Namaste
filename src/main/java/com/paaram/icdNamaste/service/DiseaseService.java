@@ -4,6 +4,7 @@ import com.paaram.icdNamaste.repo.DiseaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,5 +19,9 @@ public class DiseaseService {
 
     public Optional<Disease> getDiseaseByEnglishName(String name) {
         return repository.findByEnglishTranslation(name);
+    }
+
+    public List<Disease> searchByEnglishTranslationPrefix(String prefix) {
+        return repository.findByEnglishTranslationStartingWithIgnoreCase(prefix);
     }
 }
